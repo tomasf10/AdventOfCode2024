@@ -11,10 +11,12 @@ public static class Day_4_2
         var lines = File.ReadAllLines(path).Select(x => x.ToCharArray().ToList()).ToList();
 
         var count = 0;
-        for (int row = 0; row < lines.Count; row++) {
-            for (int column = 0; column < lines[row].Count; column++) {
+        for (int row = 0; row < lines.Count; row++)
+        {
+            for (int column = 0; column < lines[row].Count; column++)
+            {
                 count += PatterMatches(row, column, lines);
-                  
+
             }
         }
         Console.WriteLine($"count: {count}");
@@ -27,42 +29,46 @@ public static class Day_4_2
         // M.S
         // .A.
         // M.S
-        if (c + 2 < lines[r].Count && r + 2 < lines.Count && 
+        if (c + 2 < lines[r].Count && r + 2 < lines.Count &&
             lines[r][c] == 'M' && lines[r][c + 2] == 'S' &&
             lines[r + 1][c + 1] == 'A' &&
-            lines[r + 2][c] == 'M' && lines[r + 2][c + 2] == 'S') {
+            lines[r + 2][c] == 'M' && lines[r + 2][c + 2] == 'S')
+        {
             matches++;
         }
 
         // M.M
         // .A.
         // S.S
-        if (c + 2 < lines[r].Count && r + 2 < lines.Count && 
+        if (c + 2 < lines[r].Count && r + 2 < lines.Count &&
             lines[r][c] == 'M' && lines[r][c + 2] == 'M' &&
             lines[r + 1][c + 1] == 'A' &&
-            lines[r + 2][c] == 'S' && lines[r + 2][c + 2] == 'S') {
+            lines[r + 2][c] == 'S' && lines[r + 2][c + 2] == 'S')
+        {
             matches++;
         }
 
         // S.M
         // .A.
         // S.M
-        if (c + 2 < lines[r].Count && r + 2 < lines.Count && 
+        if (c + 2 < lines[r].Count && r + 2 < lines.Count &&
             lines[r][c] == 'S' && lines[r][c + 2] == 'M' &&
             lines[r + 1][c + 1] == 'A' &&
-            lines[r + 2][c] == 'S' && lines[r + 2][c + 2] == 'M') {
+            lines[r + 2][c] == 'S' && lines[r + 2][c + 2] == 'M')
+        {
             matches++;
-        }      
-        
+        }
+
         // S.S
         // .A.
         // M.M
-        if (c + 2 < lines[r].Count && r + 2 < lines.Count && 
+        if (c + 2 < lines[r].Count && r + 2 < lines.Count &&
             lines[r][c] == 'S' && lines[r][c + 2] == 'S' &&
             lines[r + 1][c + 1] == 'A' &&
-            lines[r + 2][c] == 'M' && lines[r + 2][c + 2] == 'M') {
+            lines[r + 2][c] == 'M' && lines[r + 2][c + 2] == 'M')
+        {
             matches++;
-        }     
+        }
 
         return matches;
     }

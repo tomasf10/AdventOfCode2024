@@ -9,31 +9,40 @@ public static class Day_2_2
         Console.WriteLine($"reports: {reports.Count}");
 
         var safeReports = 0;
-        foreach (var report in reports) {
-            if (IsSafe(report)) {
+        foreach (var report in reports)
+        {
+            if (IsSafe(report))
+            {
                 safeReports++;
-            } else {
-              for (int i = 0; i < report.Count; i++) {
-                var copy = report.ToList();
-                copy.RemoveAt(i);
-                if (IsSafe(copy)) {
-                    safeReports++;
-                    break;
-                } 
-              } 
+            }
+            else
+            {
+                for (int i = 0; i < report.Count; i++)
+                {
+                    var copy = report.ToList();
+                    copy.RemoveAt(i);
+                    if (IsSafe(copy))
+                    {
+                        safeReports++;
+                        break;
+                    }
+                }
             }
         }
-        
+
         Console.WriteLine($"safeReports: {safeReports}");
     }
 
-     public static bool IsSafe(List<int> report) {
+    public static bool IsSafe(List<int> report)
+    {
         var index = 0;
 
         var result1 = true;
         var result2 = true;
-        foreach (var currentLevel in report) {
-            if (index < report.Count - 1) {
+        foreach (var currentLevel in report)
+        {
+            if (index < report.Count - 1)
+            {
                 var nextLevel = report[index + 1];
 
                 var diffOk = Math.Abs(currentLevel - nextLevel) >= 1 && Math.Abs(currentLevel - nextLevel) <= 3;
@@ -42,9 +51,9 @@ public static class Day_2_2
                 result2 = result2 && currentLevel < nextLevel && diffOk;
 
                 index++;
-            }    
+            }
         }
 
-        return result1 || result2;       
-     }
+        return result1 || result2;
+    }
 }

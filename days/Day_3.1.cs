@@ -11,24 +11,26 @@ public static class Day_3_1
         var lines = File.ReadAllLines(path);
 
         var sum = 0;
-        foreach (var line in lines)  {
+        foreach (var line in lines)
+        {
             string pattern = @"mul\(\d{1,3},\d{1,3}\)";
 
-                MatchCollection matches = Regex.Matches(line, pattern);
+            MatchCollection matches = Regex.Matches(line, pattern);
 
-                foreach (Match match in matches)
-                {
-                    var value = Mul(match.Value);
-                    Console.WriteLine($"value: {value}");
+            foreach (Match match in matches)
+            {
+                var value = Mul(match.Value);
+                Console.WriteLine($"value: {value}");
 
-                    sum += value;
-                }
+                sum += value;
+            }
         }
 
         Console.WriteLine($"sum: {sum}");
     }
-    
-    public static int Mul(string mul) {
+
+    public static int Mul(string mul)
+    {
         var values = mul.Replace("mul(", "").Replace(")", "").Split(",");
 
         return int.Parse(values[0]) * int.Parse(values[1]);

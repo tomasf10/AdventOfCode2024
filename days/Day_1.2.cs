@@ -13,8 +13,9 @@ public static class Day_1_2
         var similarity = 0;
         var index = 0;
 
-        foreach (var value in a) {
-            var x  = b.Count(x => x == value);
+        foreach (var value in a)
+        {
+            var x = b.Count(x => x == value);
             similarity += value * (x);
 
             index++;

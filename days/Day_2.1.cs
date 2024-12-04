@@ -8,13 +8,16 @@ public static class Day_2_1
 
         var safeReports = 0;
 
-        foreach (var report in reports) {
+        foreach (var report in reports)
+        {
             var index = 0;
 
             var result1 = true;
             var result2 = true;
-            foreach (var currentLevel in report) {
-                if (index < report.Length - 1) {
+            foreach (var currentLevel in report)
+            {
+                if (index < report.Length - 1)
+                {
                     var nextLevel = report[index + 1];
 
                     var diffOk = Math.Abs(currentLevel - nextLevel) >= 1 && Math.Abs(currentLevel - nextLevel) <= 3;
@@ -23,10 +26,11 @@ public static class Day_2_1
                     result2 = result2 && currentLevel < nextLevel && diffOk;
 
                     index++;
-                }    
+                }
             }
 
-            if (result1 || result2) {
+            if (result1 || result2)
+            {
                 safeReports++;
             }
         }

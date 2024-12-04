@@ -13,28 +13,32 @@ public static class Day_3_2
         var sum = 0;
 
         var enabled = true;
-        foreach (var line in lines)  {
+        foreach (var line in lines)
+        {
             string pattern = @"mul\(\d{1,3},\d{1,3}\)|do\(\)|don't\(\)";
 
             MatchCollection matches = Regex.Matches(line, pattern);
 
             foreach (Match match in matches)
             {
-                if (match.Value == "do()" || match.Value == "don't()") {
+                if (match.Value == "do()" || match.Value == "don't()")
+                {
                     enabled = match.Value == "do()";
-                }            
-                else if (enabled) {
+                }
+                else if (enabled)
+                {
                     var value = Mul(match.Value);
-                    Console.WriteLine($"value: {value}"); 
+                    Console.WriteLine($"value: {value}");
                     sum += value;
-                }           
+                }
             }
         }
 
         Console.WriteLine($"sum: {sum}");
     }
-    
-    public static int Mul(string mul) {
+
+    public static int Mul(string mul)
+    {
         var values = mul.Replace("mul(", "").Replace(")", "").Split(",");
 
         return int.Parse(values[0]) * int.Parse(values[1]);
