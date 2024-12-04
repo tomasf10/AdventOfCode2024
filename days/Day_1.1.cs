@@ -2,7 +2,7 @@ public static class Day_1_1
 {
     public static void Run()
     {
-        var path = "/Users/tomasfrechou/Desktop/MyConsoleApp/input.txt";
+        var path = "./inputs/Input_Day_1.txt";
         var lines = File.ReadAllLines(path);
 
         var a = lines.Select(x => int.Parse(x.Split("   ")[0])).ToList();

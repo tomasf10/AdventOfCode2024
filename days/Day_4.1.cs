@@ -7,7 +7,7 @@ public static class Day_4_1
         // This word search allows words to be horizontal, vertical, diagonal, written backwards, or even overlapping other words
         // you need to find all of them.
 
-        var path = "/Users/tomasfrechou/Desktop/Workspace/AdventOfCode2024/inputs/Input_Day_4.txt";
+        var path = "./inputs/Input_Day_4.txt";
         var lines = File.ReadAllLines(path).Select(x => x.ToCharArray().ToList()).ToList();
 
         var count = 0;

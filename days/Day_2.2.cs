@@ -2,7 +2,7 @@ public static class Day_2_2
 {
     public static void Run()
     {
-        var path = "/Users/tomasfrechou/Desktop/Workspace/AdventOfCode2024/inputs/Input_Day_2.txt";
+        var path = "./inputs/Input_Day_2.txt";
         var lines = File.ReadAllLines(path);
 
         var reports = lines.Select(x => x.Split(" ").Select(y => int.Parse(y)).ToList()).ToList();
