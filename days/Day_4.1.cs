@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 public static class Day_4_1
 {
     public static void Run()
