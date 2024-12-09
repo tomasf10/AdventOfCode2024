@@ -11,7 +11,7 @@ public static class Day_7_1
             Values = x.Substring(x.IndexOf(":") + 2).Split(" ").Select(y => int.Parse(y)).ToList()
         });
 
-        var sum = new List<int>();
+        var sum = new List<Int128>();
 
         foreach (var line in lines)
         {
@@ -27,10 +27,10 @@ public static class Day_7_1
             }
         }
 
-        Console.WriteLine($"Sum: {string.Join(" + ", sum)} = {sum.Sum()}");
+        Console.WriteLine($"Sum: {string.Join(" + ", sum)}");
     }
 
-    private static int TestPermutations(Line line, List<List<char>> permutations)
+    private static Int128 TestPermutations(Line line, List<List<char>> permutations)
     {
         foreach (var permutation in permutations)
         {
@@ -45,31 +45,42 @@ public static class Day_7_1
         throw new Exception("No permutation is valid");
     }
 
-    private static int NewMethod(Line line, List<char> permutation)
+    private static Int128 NewMethod(Line line, List<char> permutation)
     {
-        var result = 0;
+        var index = 0;
+        long result = 0;
 
-        for (int i = 0; i < permutation.Count; i++)
+        var operation = string.Empty;
+        try
         {
-            var currentValue = line.Values[i];
-            var nextValue = line.Values[i + 1];
+            foreach (var value in permutation)
+            {
+                operation += line.Values[index];
 
-            if (permutation[i] == '+')
-            {
-                result += currentValue + nextValue;
-            }
-            else if (permutation[i] == '*')
-            {
-                result += currentValue * nextValue;
-            }
+                result = long.Parse(new DataTable().Compute(operation, null).ToString());
 
-            if (result > line.Result)
-            {
-                break;
+                if (result > line.Result)
+                {
+                    break;
+                }
+
+
+                operation += " " + value + " ";
+                index++;
             }
+            operation += line.Values.Last();
+
+            result = long.Parse(new DataTable().Compute(operation, null).ToString());
+
+
+            return result;
+        }
+        catch (Exception)
+        {
+            Console.WriteLine($"ERROR: result {line.Result}: {operation}");
+            throw;
         }
 
-        return result;
     }
 
     private static List<List<char>> GetPermutations(int taken)
