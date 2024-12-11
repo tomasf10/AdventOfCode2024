@@ -16,7 +16,12 @@
 // Day_6_1.Run();
 // Day_6_2.Run();
 
-Day_7_1.Run();
+// Day_7_1.Run();
+
+// Day_10_1.Run();
+Day_10_2.Run();
+
+
 
 
 
